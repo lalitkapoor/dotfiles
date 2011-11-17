@@ -9,3 +9,12 @@ alias tidyxml="tidy -mi -xml --show-body-only true --show-warnings yes --vertica
 
 #SYSTEM PATHS
 export NODE_PATH="/usr/local/lib/node_modules"
+
+#GLOBAL FUNCTIONS
+function swap()         
+{
+    local TMPFILE=tmp.$$
+    mv "$1" $TMPFILE
+    mv "$2" "$1"
+    mv $TMPFILE "$2"
+}
