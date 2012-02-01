@@ -1,20 +1,44 @@
-#!/bin/bash
+export SVN_EDITOR=vi
+
+#TEMINAL SETTNGS
+#export PS1="\e[0;36m[\u@\h \W]\$ \e[m" #BASH PROMPT LINE COLOR
+export INPUTRC=~/.inputrc
+
 
 #SYSTEM ALIASES
-alias updatedb="sudo /usr/libexec/locate.updatedb"
-alias serve="python -m 'SimpleHTTPServer'"
-alias rebash="source ~/.bashrc"
 alias tidyxml="tidy -mi -xml --show-body-only true --show-warnings yes --vertical-space no --wrap 0 --markup yes"
+alias cueplit="mp3splt -o \"@n @A - @t\" -c"
+alias git=/usr/local/bin/hub
+alias sublime="open -a Sublime\ Text\ 2"
 
+#SSH CONNECTIONS
 
-#SYSTEM PATHS
-export NODE_PATH="/usr/local/lib/node_modules"
+#SYSTEM FUNCTIONS
+alias updatedb="/usr/libexec/locate.updatedb"
+alias removesvn="find . -regex '.*.svn' -exec rm -rf \"{}\" \;"
+alias serve="python -m SimpleHTTPServer"
+alias fdate="date \"+%Y-%m-%d-%H-%M-%S\""
+alias targz="tar -cvzf"
+alias sethostname="sudo scutil --set HostName"
+alias ebash="vi /Users/lalit/.bashrc"
+alias rebash="source /Users/lalit/.bashrc"
+alias dockspacer="defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type=\"spacer-tile\";}'"
+alias hgunadd="hg rm -f"
 
-#GLOBAL FUNCTIONS
-function swap()         
-{
-    local TMPFILE=tmp.$$
-    mv "$1" $TMPFILE
-    mv "$2" "$1"
-    mv $TMPFILE "$2"
+#PATH RELATED
+export TM_SUPPORT_PATH=/Applications/TextMate.app/Contents/SharedSupport/Support
+export PYTHONPATH=$PYTHONPATH:/Users/lalit/projects/sharex-3rd-party/django-facebook:/Users/lalit/projects/viz/pylib:/Users/lalit/projects/sharex/zen
+export PATH=$PATH:/usr/local/mongodb/bin:$HOME/local/node/bin:$HOME/local/coffee-script/bin:/Applications/typesafe-stack/bin:$TM_SUPPORT_PATH:/usr/local/mysql/bin
+export JIRA_HOME=/Users/lalit/Applications/jira/home
+
+#FUNCTIONS
+pre () {
+    echo -n '<pre style="word-wrap: break-word;">'
+    perl -pe '$| = 1; s/&/&amp;/g; s/</&lt;/g; s/>/&gt;/g; s/$\\n/<br>/'
+    echo '</pre>'
+}
+
+#set the title of the current window/tab
+title(){
+	echo -e "\033];"$1"\007"
 }
