@@ -4,6 +4,9 @@ export SVN_EDITOR=vi
 #export PS1="\e[0;36m[\u@\h \W]\$ \e[m" #BASH PROMPT LINE COLOR
 export INPUTRC=~/.inputrc
 
+#save bash history on exit
+shopt -s histappend
+
 
 #SYSTEM ALIASES
 alias tidyxml="tidy -mi -xml --show-body-only true --show-warnings yes --vertical-space no --wrap 0 --markup yes"
