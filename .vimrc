@@ -1,5 +1,7 @@
 "THIS IS FROM - http://www.pixelbeat.org/settings/.vimrc
 
+set mouse=a
+
 "Note when ~/.vimrc present the following is done automatically
 "set nocompatible
 

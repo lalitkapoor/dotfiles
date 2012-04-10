@@ -1,29 +1,35 @@
 [user]
-	name = Lalit Kapoor
-	email = lalitkapoor@gmail.com
+  name = Lalit Kapoor
+  email = lalitkapoor@gmail.com
 [alias]
-	co = checkout
+  co = checkout
   ci = commit
   rb = rebase
-	unstage = reset HEAD --
+  unstage = reset HEAD --
   uncommit = reset --soft HEAD^
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(magenta)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	fixup = commit --amend --reuse-message HEAD
-	wip = commit -a -m "WIP"
-	go = reset HEAD^
+  unadd = reset
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(magenta)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  fixup = commit --amend --reuse-message HEAD
+  wip = commit -a -m "WIP"
+  go = reset HEAD^
+  pushup = git push -u
+  pushorigin = git push -u origin
 [merge]
-	tool = diffmerge
+  tool = diffmerge
 [mergetool "diffmerge"]
-	cmd = diffmerge --merge\n--result=$MERGED $LOCAL $BASE $REMOTE
-	trustExitCode = true
+  cmd = diffmerge --merge\n--result=$MERGED $LOCAL $BASE $REMOTE
+  trustExitCode = true
 [diff]
-	tool = diffmerge
+  tool = diffmerge
 [difftool "diffmerge"]
-	cmd = diffmerge $LOCAL $REMOTE
+  cmd = diffmerge $LOCAL $REMOTE
 [github]
-	user = lalitkapoor
-	token = 6cff0bcd0cd0b6f8f3c5010ce0b67c9b
+  user = lalitkapoor
+  token = 6cff0bcd0cd0b6f8f3c5010ce0b67c9b
 
 [core]
   mergeoptions = --no-ff
+  excludesfile = /Users/lalit/.gitignore
   #mergeoptions = --no-ff --no-commit
+[push]
+  default = upstream

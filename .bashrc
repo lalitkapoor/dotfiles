@@ -1,3 +1,13 @@
+source ~/.bash/prompt
+source ~/.git-completion.bash
+
+export HISTSIZE=1000000
+export HISTTIMEFORMAT="%d/%m/%y %T "
+shopt -s histappend
+#export PROMPT_COMMAND="history -n; history -a; $PROMPT_COMMAND"
+#export PROMPT_COMMAND="history -n; $PROMPT_COMMAND"
+export PROMPT_COMMAND="$PROMPT_COMMAND"
+
 export SVN_EDITOR=vi
 
 #TEMINAL SETTNGS
