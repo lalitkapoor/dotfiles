@@ -1,5 +1,6 @@
 alias refish "source ~/.config/fish/config.fish"
 alias efish "vi ~/.config/fish/config.fish"
+alias ewez "nvim ~/.config/wezterm/wezterm.lua"
 alias killdns "sudo killall -HUP mDNSResponder"
 alias flushdns "sudo killall -HUP mDNSResponder"
 
@@ -21,6 +22,9 @@ set -gx PATH /Users/lalit/bin $PATH
 
 # add node_module bin to path
 set -gx PATH $PATH ./node_modules/.bin
+
+# mise package manager
+mise activate fish --shims | source
 
 # enable starfish shell prompt
 # https://github.com/starship/starship
@@ -54,12 +58,12 @@ end
 # fzf
 fzf --fish | source
 
-# mise package manager
-mise activate fish | source
-
 # pnpm
 set -gx PNPM_HOME "/Users/lalit/Library/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
+
+# notion specific
+zsh -c "$(notion completion --install)"
