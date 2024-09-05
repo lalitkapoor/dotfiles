@@ -4,6 +4,9 @@ alias ewez "nvim ~/.config/wezterm/wezterm.lua"
 alias killdns "sudo killall -HUP mDNSResponder"
 alias flushdns "sudo killall -HUP mDNSResponder"
 
+# remove fish greeting
+set -g fish_greeting
+
 function vi
   nvim $argv
 end
