@@ -20,6 +20,8 @@ keybind = cmd+down=esc:j
 # allow tmux to use these for switching windows
 keybind = cmd+shift+left=unbind
 keybind = cmd+shift+right=unbind
+keybind = cmd+shift+left_bracket=csi:2;10[
+keybind = cmd+shift+right_bracket=csi:2;10]
 
 # cmd+k clears the terminal (sends command to tmux)
 keybind = cmd+k=esc:K
@@ -32,3 +34,4 @@ keybind = cmd+t=esc:t
 
 # cmd+r renames a window in tmux
 keybind = cmd+r=esc:r
+
