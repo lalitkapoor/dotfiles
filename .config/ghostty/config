@@ -1,0 +1,34 @@
+theme = Poimandres 
+font-family = BlexMono Nerd Font Mono
+font-size = 12
+macos-titlebar-style = hidden
+background-opacity = 1
+background-blur-radius = 16
+window-padding-x = 8
+window-padding-y = 8
+
+# allow tmux to create vertical and horizontal splits
+keybind = cmd+d=esc:d
+keybind = cmd+shift+d=esc:D
+
+# allow tmux to use these for navigating between panes
+keybind = cmd+left=esc:h
+keybind = cmd+right=esc:l
+keybind = cmd+up=esc:k
+keybind = cmd+down=esc:j
+
+# allow tmux to use these for switching windows
+keybind = cmd+shift+left=unbind
+keybind = cmd+shift+right=unbind
+
+# cmd+k clears the terminal (sends command to tmux)
+keybind = cmd+k=esc:K
+
+# cmd+w closes pane in tmux
+keybind = cmd+w=esc:w
+
+# cmd+t opens a new tmux window
+keybind = cmd+t=esc:t
+
+# cmd+r renames a window in tmux
+keybind = cmd+r=esc:r

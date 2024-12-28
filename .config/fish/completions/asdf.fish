@@ -1,0 +1,1 @@
+/Users/lalit/.asdf/completions/asdf.fish

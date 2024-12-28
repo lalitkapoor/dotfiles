@@ -1,0 +1,51 @@
+[user]
+  name = Lalit Kapoor
+  email = lalitkapoor@gmail.com
+[alias]
+  co = checkout
+  ci = commit
+  diffs = diff --cached
+  rb = rebase
+  unstage = reset HEAD --
+  uncommit = reset --soft HEAD^
+  unadd = reset
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(magenta)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  fixup = commit --amend --reuse-message HEAD
+  wip = commit -a -m "WIP"
+  go = reset HEAD^
+  pushup = git push -u
+  pushorigin = git push -u origin
+  mybranches = "!git for-each-ref --format='%(refname:short) %(upstream:short)' refs/heads/ | awk '{if ($2 != \"\") print \"U \" $1; else print \"L \" $1}'"
+  cb = !git checkout $(git branch | fzf | xargs)
+
+[merge]
+  tool = diffmerge
+[mergetool "diffmerge"]
+  cmd = diffmerge --merge\n--result=$MERGED $LOCAL $BASE $REMOTE
+  trustExitCode = true
+[diff]
+  tool = diffmerge
+[difftool "diffmerge"]
+  cmd = diffmerge $LOCAL $REMOTE
+[github]
+  user = lalitkapoor
+  token = 6cff0bcd0cd0b6f8f3c5010ce0b67c9b
+
+[core]
+  mergeoptions = --no-ff
+  excludesfile = /Users/lalit/.gitignore_global
+  pager = less -x2
+  #mergeoptions = --no-ff --no-commit
+[push]
+  default = upstream
+  autoSetupRemote = true
+[filter "lfs"]
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+[commit]
+  template = /Users/lalit/.stCommitMsg
+
+[include]
+  path=~/.local/git/.gitconfig
