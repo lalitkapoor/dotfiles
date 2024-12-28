@@ -21,3 +21,4 @@ project.xcworkspace
 #sublime stuff
 *.sublime-project
 *.sublime-workspace
+.config/tmux/plugins/*
