@@ -9,6 +9,11 @@ alias flushdns "sudo killall -HUP mDNSResponder"
 # remove fish greeting
 set -g fish_greeting
 
+# add ghostty to the path if it exists
+if test -d "/Applications/Ghostty.app/Contents/MacOS"
+  fish_add_path "/Applications/Ghostty.app/Contents/MacOS"
+end
+
 # alias vi to use nvm
 function vi
   nvim $argv
