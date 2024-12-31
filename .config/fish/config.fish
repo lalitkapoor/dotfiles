@@ -90,11 +90,15 @@ if test -f ~/.local/fish/config.fish
 end
 
 # always be in a tmux session
-if not set -q TMUX
+if test "$TERM_PROGRAM" = "ghostty"; \
+  or test "$TERM_PROGRAM" = "iTerm.app"; \
+  or test "$TERM_PROGRAM" = "Apple_Terminal"
+  if not set -q TMUX
     tmux has-session -t default 2>/dev/null
     if test $status -ne 0
-        tmux new-session -s default -d
+      tmux new-session -s default -d
     end
     exec tmux attach-session -t default
+  end
 end
 

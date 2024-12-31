@@ -7,6 +7,8 @@ background-blur-radius = 16
 window-padding-x = 8
 window-padding-y = 8
 
+macos-option-as-alt = true
+
 # allow tmux to create vertical and horizontal splits
 keybind = cmd+d=esc:d
 keybind = cmd+shift+d=esc:D
@@ -35,3 +37,8 @@ keybind = cmd+t=esc:t
 # cmd+r renames a window in tmux
 keybind = cmd+r=esc:r
 
+# cmd+f opens search in tmux
+keybind = cmd+f=csi:2;10f
+
+# cmd+shift+r reloads tmux config
+keybind = cmd+shift+r=csi:2;10r
