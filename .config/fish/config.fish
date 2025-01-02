@@ -6,7 +6,6 @@ alias retmux "tmux source ~/.config/tmux/tmux.conf"
 alias killdns "sudo killall -HUP mDNSResponder"
 alias flushdns "sudo killall -HUP mDNSResponder"
 alias y "yazi"
-alias ls "eza --icons=always --group-directories-first"
 
 # remove fish greeting
 set -g fish_greeting
@@ -14,6 +13,11 @@ set -g fish_greeting
 # add ghostty to the path if it exists
 if test -d "/Applications/Ghostty.app/Contents/MacOS"
   fish_add_path "/Applications/Ghostty.app/Contents/MacOS"
+end
+
+# alias ls
+function ls --wraps=eza
+  eza --icons=always --group-directories-first $argv
 end
 
 # alias vi to use nvm
