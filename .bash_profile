@@ -13,4 +13,3 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local:/usr/local/sbin:/usr/local/bin:/usr/X11/bin:/opt/X11/bin
 # Finished adapting your PATH environment variable for use with MacPorts.
 source ~/.bashrc
-source ~/.goodybag
