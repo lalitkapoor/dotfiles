@@ -6,7 +6,7 @@ alias retmux "tmux source ~/.config/tmux/tmux.conf"
 alias killdns "sudo killall -HUP mDNSResponder"
 alias flushdns "sudo killall -HUP mDNSResponder"
 alias y "yazi"
-alias ls "eza --icons=always"
+alias ls "eza --icons=always --group-directories-first"
 
 # remove fish greeting
 set -g fish_greeting
