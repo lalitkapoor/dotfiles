@@ -1,5 +1,6 @@
 alias refish "source ~/.config/fish/config.fish"
 alias efish "vi ~/.config/fish/config.fish"
+alias egit "vi ~/.gitconfig"
 alias eghost "vi ~/.config/ghostty/config"
 alias etmux "vi ~/.config/tmux/tmux.conf"
 alias retmux "tmux source ~/.config/tmux/tmux.conf"
@@ -60,6 +61,9 @@ starship init fish | source
 # setup direnv
 direnv hook fish | source
 
+# setup fuck
+thefuck --alias | source
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
@@ -108,3 +112,4 @@ if test "$TERM_PROGRAM" = "ghostty"; \
   end
 end
 
+# local only configuration is in ~/.local/fish/config.fish
