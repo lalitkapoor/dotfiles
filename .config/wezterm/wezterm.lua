@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 config.default_prog = {"/opt/homebrew/bin/fish"}
 
 -- (This is where our config will go)
-config.color_scheme = "Poimandres"
+config.color_scheme = "Ayu Mirage (Gogh)"
 config.font = wezterm.font({ family = "BlexMono Nerd Font" })
 config.font_size = 13
 
