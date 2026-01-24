@@ -1,6 +1,6 @@
 [user]
-  name = Lalit Kapoor
-  email = lalitkapoor@gmail.com
+	name = Lalit Kapoor
+	email = lalitkapoor@gmail.com
 [alias]
   co = checkout
   ci = commit
@@ -34,7 +34,7 @@
 [core]
   mergeoptions = --no-ff
   excludesfile = /Users/lalit/.gitignore_global
-  pager = less -x2
+  pager = ~/.config/delta/delta-auto
   #mergeoptions = --no-ff --no-commit
 [push]
   default = upstream

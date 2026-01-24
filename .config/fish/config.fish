@@ -26,6 +26,15 @@ function vi
   nvim $argv
 end
 
+function bat
+  set appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
+  if test "$appearance" = "Dark"
+    command bat --theme="Ayu Mirage" $argv
+  else
+    command bat --theme="Ayu Light" $argv
+  end
+end
+
 # Add dashes to a UUID without them
 function fix-uuid
   pbpaste | sed 's|\([a-z0-9]\{8\}\)\([a-z0-9]\{4\}\)\([a-z0-9]\{4\}\)\([a-z0-9]\{4\}\)|\1-\2-\3-\4-|' | tee /dev/stderr | pbcopy 
@@ -34,6 +43,13 @@ end
 # Remove dashes from a UUID with them
 function unfix-uuid
   pbpaste | sed 's|-||g' | tee /dev/stderr | pbcopy
+end
+
+# fix npm install related issue
+function unfuck-node-modules
+   find node_modules -type d -name ".*-*" -prune -exec rm -rf {} +
+   npm install
+   npm rebuild
 end
 
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
@@ -50,6 +66,12 @@ set -gx PATH /Users/lalit/bin $PATH
 
 # add node_module bin to path
 set -gx PATH $PATH ./node_modules/.bin
+
+# local bin
+fish_add_path "/Users/lalit/.local/bin"
+
+# add bun bin
+fish_add_path "/Users/lalit/.bun/bin"
 
 # mise package manager
 mise activate fish --shims | source

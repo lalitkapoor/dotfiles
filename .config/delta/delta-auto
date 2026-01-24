@@ -1,0 +1,6 @@
+#!/bin/bash
+if [[ $(defaults read -g AppleInterfaceStyle 2>/dev/null) == "Dark" ]]; then
+  delta --syntax-theme="Ayu Mirage" "$@"
+else
+  delta --syntax-theme="Ayu Light" "$@"
+fi

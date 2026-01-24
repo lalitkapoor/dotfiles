@@ -1,1 +1,3 @@
---theme="Poimandres"
+--theme=auto:system
+--theme-light="Ayu Light"
+--theme-dark="Ayu Mirage"
