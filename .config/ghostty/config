@@ -1,4 +1,7 @@
-theme = Ayu Mirage
+# update to latest pre-release builds
+auto-update-channel = tip
+
+theme = dark:"Ayu Mirage",light:"Ayu Light"
 font-family = BlexMono Nerd Font Mono
 font-size = 12
 macos-titlebar-style = hidden
@@ -38,7 +41,12 @@ keybind = cmd+t=esc:t
 keybind = cmd+r=esc:r
 
 # cmd+f opens search in tmux
-keybind = cmd+f=csi:2;10f
+# keybind = cmd+f=csi:2;10f
 
 # cmd+shift+r reloads tmux config
 keybind = cmd+shift+r=csi:2;10r
+keybind = shift+enter=text:\x1b\r
+
+# pass F5/F6 through to tmux (theme switch)
+keybind = f5=csi:15~
+keybind = f6=csi:17~
