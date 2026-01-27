@@ -18,8 +18,9 @@ function __tmux_rename_git_window --description "Rename tmux window to git branc
     set -l repo_root (command git rev-parse --show-toplevel 2>/dev/null)
 
     set -l branch (command git branch --show-current 2>/dev/null)
+    set -l is_detached "false"
     if test -z "$branch"
-        return
+        set is_detached "true"
     end
 
     set -l branch (string replace -r '^lalitkapoor--' '' -- "$branch")
@@ -59,16 +60,28 @@ function __tmux_rename_git_window --description "Rename tmux window to git branc
         if string match -q '*worktrees/*' -- "$git_dir"
             set -l worktree_name (basename "$physical_repo_root")
             if test -n "$repo_name" -a -n "$worktree_name"
-                set -l suffix " ($repo_name/$worktree_name)"
-                command tmux rename-window "$branch$suffix"
+                if test "$is_detached" = "true"
+                    command tmux rename-window "$repo_name/$worktree_name"
+                else
+                    set -l suffix " ($repo_name/$worktree_name)"
+                    command tmux rename-window "$branch$suffix"
+                end
                 return
             end
         end
     end
 
     if test -n "$repo_name"
-        set -l suffix " ($repo_name)"
-        command tmux rename-window "$branch$suffix"
+        if test "$is_detached" = "true"
+            command tmux rename-window "$repo_name"
+        else
+            set -l suffix " ($repo_name)"
+            command tmux rename-window "$branch$suffix"
+        end
+        return
+    end
+
+    if test "$is_detached" = "true"
         return
     end
 
