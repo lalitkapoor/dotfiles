@@ -28,7 +28,44 @@ function __tmux_rename_git_window --description "Rename tmux window to git branc
         set physical_repo_root (command realpath "$repo_root" 2>/dev/null)
     end
 
-    set -l repo_name (basename "$physical_repo_root")
+    set -l git_dir (command git rev-parse --git-dir 2>/dev/null)
+    if test -n "$git_dir"
+        if not string match -q '/*' -- "$git_dir"
+            set git_dir "$repo_root/$git_dir"
+        end
+        if command -q realpath
+            set git_dir (command realpath "$git_dir" 2>/dev/null)
+        end
+    end
+
+    set -l common_dir (command git rev-parse --git-common-dir 2>/dev/null)
+    if test -n "$common_dir"
+        if not string match -q '/*' -- "$common_dir"
+            set common_dir "$repo_root/$common_dir"
+        end
+        if command -q realpath
+            set common_dir (command realpath "$common_dir" 2>/dev/null)
+        end
+    end
+
+    set -l repo_name ""
+    if test -n "$common_dir"
+        set repo_name (basename (dirname "$common_dir"))
+    else if test -n "$physical_repo_root"
+        set repo_name (basename "$physical_repo_root")
+    end
+
+    if test -n "$git_dir"
+        if string match -q '*worktrees/*' -- "$git_dir"
+            set -l worktree_name (basename "$physical_repo_root")
+            if test -n "$repo_name" -a -n "$worktree_name"
+                set -l suffix " ($repo_name/$worktree_name)"
+                command tmux rename-window "$branch$suffix"
+                return
+            end
+        end
+    end
+
     if test -n "$repo_name"
         set -l suffix " ($repo_name)"
         command tmux rename-window "$branch$suffix"
