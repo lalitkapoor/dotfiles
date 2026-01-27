@@ -92,4 +92,8 @@ function __tmux_rename_git_window_on_pwd --on-variable PWD
     __tmux_rename_git_window
 end
 
+function __tmux_rename_git_window_on_prompt --on-event fish_prompt
+    __tmux_rename_git_window
+end
+
 __tmux_rename_git_window
