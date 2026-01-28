@@ -5,7 +5,6 @@
 - Favor maintainability over cleverness.
 - Reduce complexity whenever possible; keep abstractions helpful but not overdone.
 - Seek deep understanding before changing a system; start from first principles.
-- Treat complexity as the primary enemy; default to "no," and when you must say "yes," aim for an 80/20 solution that delivers most value with minimal complexity.
 - Apply Chesterton's Fence: understand why something exists before removing or redesigning it.
 - Prototype or demo early to ground discussions in working reality, especially with complex ideas.
 - Invest early in tool and debugger mastery to deepen understanding and speed up development.
