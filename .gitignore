@@ -25,10 +25,12 @@ project.xcworkspace
 .config/fish/fish_variables
 .config/fish/completions/notion.fish
 
-# Codex: sensitive / ephemeral
-.codex/auth.json
-.codex/history.jsonl
-.codex/log/
-.codex/sessions/
-.codex/tmp/
-.codex/version.json
+# Codex: ignore everything by default, allowlisted paths only
+.codex/*
+!.codex/AGENTS.md
+!.codex/prompts
+!.codex/prompts/**
+!.codex/rules/
+!.codex/rules/**
+!.codex/skills/
+!.codex/skills/**
