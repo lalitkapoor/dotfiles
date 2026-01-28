@@ -24,3 +24,11 @@ project.xcworkspace
 .config/tmux/plugins/*
 .config/fish/fish_variables
 .config/fish/completions/notion.fish
+
+# Codex: sensitive / ephemeral
+.codex/auth.json
+.codex/history.jsonl
+.codex/log/
+.codex/sessions/
+.codex/tmp/
+.codex/version.json
