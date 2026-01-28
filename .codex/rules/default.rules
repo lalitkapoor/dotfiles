@@ -1,0 +1,26 @@
+# Allow running arbitrary shell commands via zsh -lc (common wrapper)
+prefix_rule(pattern=["/bin/zsh", "-lc"], decision="allow")
+
+# Git: allow common operations broadly
+prefix_rule(pattern=["git"], decision="allow")
+# (If you want to be slightly less wide-open, replace the line above with:)
+# prefix_rule(pattern=["git", "add"], decision="allow")
+# prefix_rule(pattern=["git", "commit"], decision="allow")
+# prefix_rule(pattern=["git", "rebase"], decision="allow")
+# prefix_rule(pattern=["git", "push"], decision="allow")
+# prefix_rule(pattern=["git", "status"], decision="allow")
+# prefix_rule(pattern=["git", "diff"], decision="allow")
+# prefix_rule(pattern=["git", "log"], decision="allow")
+
+# GitHub CLI: allow PR operations (edit/create/etc) without pinning IDs/files
+prefix_rule(pattern=["gh", "pr"], decision="allow")
+# Or even:
+# prefix_rule(pattern=["gh"], decision="allow")
+
+# Notion CLI: allow tests (and other notion subcommands if you want)
+prefix_rule(pattern=["notion"], decision="allow")
+# If you only want tests:
+# prefix_rule(pattern=["notion", "test"], decision="allow")
+
+# Utilities you listed
+prefix_rule(pattern=["ps"], decision="allow")
