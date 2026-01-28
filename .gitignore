@@ -28,8 +28,7 @@ project.xcworkspace
 # Codex: ignore everything by default, allowlisted paths only
 .codex/*
 !.codex/AGENTS.md
-!.codex/prompts
-!.codex/prompts/**
+# prompts intentionally ignored (repo-specific)
 !.codex/rules/
 !.codex/rules/**
 !.codex/skills/
