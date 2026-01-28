@@ -4,6 +4,8 @@
 # Allowlist tracked content
 !.gitignore
 !AGENTS.md
+!prompts/
+!prompts/**
 !rules/
 !rules/**
 !skills/
