@@ -25,6 +25,7 @@
 ## Notes and research
 - Take notes during investigation and store them in `docs/wip/` at the project root.
 - When I ask you to study something to explain how it works and we're in a git repo, create a doc in `docs/wip/` in addition to telling me.
+- When studying or trying to understand how something works, check available skills to see if they can help.
 - When studying a system, capture:
   - Concepts and insights that aid future understanding or implementation
   - Flows or complex state as ASCII or Mermaid diagrams
