@@ -8,6 +8,7 @@
 - Treat complexity as the primary enemy; default to "no," and when you must say "yes," aim for an 80/20 solution that delivers most value with minimal complexity.
 - Apply Chesterton's Fence: understand why something exists before removing or redesigning it.
 - Prototype or demo early to ground discussions in working reality, especially with complex ideas.
+- Invest early in tool and debugger mastery to deepen understanding and speed up development.
 
 ## Planning and alignment
 - Create a detailed plan before implementation.
@@ -31,7 +32,6 @@
 - Research and try ideas; summarize what was learned.
 - Keep a short Decision Log in notes for major decisions and their rationale.
 - Prefer Mermaid for flows and ASCII for state machines; keep diagrams minimal and labeled.
-- Invest early in tool and debugger mastery to deepen understanding and speed up development.
 
 ## Testing and execution
 - Provide a test plan for the overall work and for each major section so we can rigorously build up a solution.
