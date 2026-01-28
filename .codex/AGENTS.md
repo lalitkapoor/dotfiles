@@ -1,4 +1,3 @@
-<INSTRUCTIONS>
 # Lalit preferences
 
 ## Values and collaboration
@@ -53,4 +52,3 @@
 ## Command timeouts
 - Default command timeouts to 30 seconds.
 - If a command times out, retry or re-run with a 120-second timeout.
-</INSTRUCTIONS>
