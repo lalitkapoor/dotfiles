@@ -35,6 +35,8 @@
   mergeoptions = --no-ff
   excludesfile = /Users/lalit/.gitignore_global
   pager = ~/.config/delta/delta-auto
+	fsmonitor = true
+	untrackedCache = true
   #mergeoptions = --no-ff --no-commit
 [push]
   default = upstream
