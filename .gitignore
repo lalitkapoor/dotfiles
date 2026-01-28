@@ -24,12 +24,3 @@ project.xcworkspace
 .config/tmux/plugins/*
 .config/fish/fish_variables
 .config/fish/completions/notion.fish
-
-# Codex: ignore everything by default, allowlisted paths only
-.codex/*
-!.codex/AGENTS.md
-# prompts intentionally ignored (repo-specific)
-!.codex/rules/
-!.codex/rules/**
-!.codex/skills/
-!.codex/skills/**

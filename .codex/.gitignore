@@ -1,0 +1,10 @@
+# Ignore everything in this directory by default
+*
+
+# Allowlist tracked content
+!.gitignore
+!AGENTS.md
+!rules/
+!rules/**
+!skills/
+!skills/**
