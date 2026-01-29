@@ -23,8 +23,7 @@
 - Keep changes scoped; if scope grows, re-align before proceeding.
 
 ## Notes and research
-- Take notes during investigation and store them in a project folder under `docs/` at the project root.
-- Name project folders descriptively, appending `.local` for work in progress (e.g., `docs/local-snapshots.local/`).
+- Take notes during investigation and store them in `~/docs/<repo-name>/<project-name>/`.
 - When I ask you to study something to explain how it works and we're in a git repo, create a doc in the appropriate project folder in addition to telling me.
 - When studying or trying to understand how something works, check available skills to see if they can help.
 - When studying a system, capture:
