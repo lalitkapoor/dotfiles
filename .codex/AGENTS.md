@@ -24,6 +24,7 @@
 
 ## Notes and research
 - Take notes during investigation and store them in `~/docs/<repo-name>/<project-name>/`.
+- Each `~/docs/<repo-name>/` directory is its own git repo. When asked to commit or push docs, `cd` into `~/docs/<repo-name>/` (where the `.git` folder lives), NOT `~/docs/`. For example, to push changes in `~/docs/notion-next/local-snapshots/`, the git repo is at `~/docs/notion-next/`.
 - When I ask you to study something to explain how it works and we're in a git repo, create a doc in the appropriate project folder in addition to telling me.
 - When studying or trying to understand how something works, check available skills to see if they can help.
 - When studying a system, capture:
