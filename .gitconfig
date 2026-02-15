@@ -17,6 +17,8 @@
   pushorigin = git push -u origin
   mybranches = "!git for-each-ref --format='%(refname:short) %(upstream:short)' refs/heads/ | awk '{if ($2 != \"\") print \"U \" $1; else print \"L \" $1}'"
   cb = !git checkout $(git branch | fzf | xargs)
+	pull-all = \\!git fetch --all && git pull
+	push-all = \\!git push --all
 
 [merge]
   tool = diffmerge
@@ -39,7 +41,7 @@
 	untrackedCache = true
   #mergeoptions = --no-ff --no-commit
 [push]
-  default = upstream
+	default = current
   autoSetupRemote = true
 [filter "lfs"]
   smudge = git-lfs smudge -- %f
@@ -51,3 +53,5 @@
 
 [include]
   path=~/.local/git/.gitconfig
+[pull]
+	default = current
