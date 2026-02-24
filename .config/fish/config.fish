@@ -6,7 +6,7 @@ alias etmux "vi ~/.config/tmux/tmux.conf"
 alias retmux "tmux source ~/.config/tmux/tmux.conf"
 alias killdns "sudo killall -HUP mDNSResponder"
 alias flushdns "sudo killall -HUP mDNSResponder"
-alias y "yazi"
+alias y yazi
 
 # remove fish greeting
 set -g fish_greeting
@@ -26,9 +26,13 @@ function vi
   nvim $argv
 end
 
+function vim
+  nvim $argv
+end
+
 function bat
   set appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
-  if test "$appearance" = "Dark"
+  if test "$appearance" = Dark
     command bat --theme="Ayu Mirage" $argv
   else
     command bat --theme="Ayu Light" $argv
@@ -37,7 +41,7 @@ end
 
 # Add dashes to a UUID without them
 function fix-uuid
-  pbpaste | sed 's|\([a-z0-9]\{8\}\)\([a-z0-9]\{4\}\)\([a-z0-9]\{4\}\)\([a-z0-9]\{4\}\)|\1-\2-\3-\4-|' | tee /dev/stderr | pbcopy 
+  pbpaste | sed 's|\([a-z0-9]\{8\}\)\([a-z0-9]\{4\}\)\([a-z0-9]\{4\}\)\([a-z0-9]\{4\}\)|\1-\2-\3-\4-|' | tee /dev/stderr | pbcopy
 end
 
 # Remove dashes from a UUID with them
@@ -47,9 +51,9 @@ end
 
 # fix npm install related issue
 function unfuck-node-modules
-   find node_modules -type d -name ".*-*" -prune -exec rm -rf {} +
-   npm install
-   npm rebuild
+  find node_modules -type d -name ".*-*" -prune -exec rm -rf {} +
+  npm install
+  npm rebuild
 end
 
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
@@ -87,11 +91,11 @@ direnv hook fish | source
 thefuck --alias | source
 
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+  # Commands to run in interactive sessions can go here
 end
 
 # The next line updates PATH for the Google Cloud SDK.
-if test -f '/Users/lalit/google-cloud-sdk/path.fish.inc' 
+if test -f '/Users/lalit/google-cloud-sdk/path.fish.inc'
   source '/Users/lalit/google-cloud-sdk/path.fish.inc'
 end
 
@@ -110,7 +114,7 @@ end
 fzf --fish | source
 
 # pnpm
-set -gx PNPM_HOME "/Users/lalit/Library/pnpm"
+set -gx PNPM_HOME /Users/lalit/Library/pnpm
 if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
@@ -118,13 +122,11 @@ end
 
 # if we have a config in ~/.local for private things, source them now
 if test -f ~/.local/fish/config.fish
-    source ~/.local/fish/config.fish
+  source ~/.local/fish/config.fish
 end
 
 # always be in a tmux session
-if test "$TERM_PROGRAM" = "ghostty"; \
-  or test "$TERM_PROGRAM" = "iTerm.app"; \
-  or test "$TERM_PROGRAM" = "Apple_Terminal"
+if test "$TERM_PROGRAM" = ghostty; or test "$TERM_PROGRAM" = "iTerm.app"; or test "$TERM_PROGRAM" = Apple_Terminal
   if not set -q TMUX
     tmux has-session -t default 2>/dev/null
     if test $status -ne 0
