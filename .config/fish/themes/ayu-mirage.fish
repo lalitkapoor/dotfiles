@@ -1,6 +1,5 @@
 # Ayu Mirage — fish syntax colors
 # Colors from https://github.com/ayu-theme/ayu-colors
-# TODO: tune these for dark background
 
 set -U fish_color_normal cccac2
 set -U fish_color_command 73d0ff
