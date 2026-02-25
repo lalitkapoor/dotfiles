@@ -11,6 +11,14 @@ alias y yazi
 # remove fish greeting
 set -g fish_greeting
 
+# fish syntax colors — pick theme based on macOS appearance
+set -l appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
+if test "$appearance" = Dark
+  source ~/.config/fish/themes/ayu-mirage.fish
+else
+  source ~/.config/fish/themes/ayu-light.fish
+end
+
 # add ghostty to the path if it exists
 if test -d "/Applications/Ghostty.app/Contents/MacOS"
   fish_add_path "/Applications/Ghostty.app/Contents/MacOS"
