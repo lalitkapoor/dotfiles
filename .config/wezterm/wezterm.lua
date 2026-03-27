@@ -13,7 +13,7 @@ config.font_size = 13
 -- No app bar
 config.window_decorations = "RESIZE"
 
--- Configure window close behavior
+-- Configure window close bsehavior
 config.window_close_confirmation = "NeverPrompt"
 config.exit_behavior = "Close"
 config.quit_when_all_windows_are_closed = false

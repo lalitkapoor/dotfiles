@@ -16,47 +16,51 @@ source ~/.config/fish/colors.fish
 
 # add ghostty to the path if it exists
 if test -d "/Applications/Ghostty.app/Contents/MacOS"
-  fish_add_path "/Applications/Ghostty.app/Contents/MacOS"
+    fish_add_path "/Applications/Ghostty.app/Contents/MacOS"
 end
 
 # alias ls
 function ls --wraps=eza
-  eza --icons=always --group-directories-first $argv
+    eza --icons=always --group-directories-first $argv
 end
 
 # alias vi to use nvm
 function vi
-  nvim $argv
+    nvim $argv
 end
 
 function vim
-  nvim $argv
+    nvim $argv
+end
+
+function cc
+    claude --dangerously-skip-permissions $argv
 end
 
 function bat
-  set appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
-  if test "$appearance" = Dark
-    command bat --theme="Ayu Mirage" $argv
-  else
-    command bat --theme="Ayu Light" $argv
-  end
+    set appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
+    if test "$appearance" = Dark
+        command bat --theme="Ayu Mirage" $argv
+    else
+        command bat --theme="Ayu Light" $argv
+    end
 end
 
 # Add dashes to a UUID without them
 function fix-uuid
-  pbpaste | sed 's|\([a-z0-9]\{8\}\)\([a-z0-9]\{4\}\)\([a-z0-9]\{4\}\)\([a-z0-9]\{4\}\)|\1-\2-\3-\4-|' | tee /dev/stderr | pbcopy
+    pbpaste | sed 's|\([a-z0-9]\{8\}\)\([a-z0-9]\{4\}\)\([a-z0-9]\{4\}\)\([a-z0-9]\{4\}\)|\1-\2-\3-\4-|' | tee /dev/stderr | pbcopy
 end
 
 # Remove dashes from a UUID with them
 function unfix-uuid
-  pbpaste | sed 's|-||g' | tee /dev/stderr | pbcopy
+    pbpaste | sed 's|-||g' | tee /dev/stderr | pbcopy
 end
 
 # fix npm install related issue
 function unfuck-node-modules
-  find node_modules -type d -name ".*-*" -prune -exec rm -rf {} +
-  npm install
-  npm rebuild
+    find node_modules -type d -name ".*-*" -prune -exec rm -rf {} +
+    npm install
+    npm rebuild
 end
 
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
@@ -94,23 +98,23 @@ direnv hook fish | source
 thefuck --alias | source
 
 if status is-interactive
-  # Commands to run in interactive sessions can go here
+    # Commands to run in interactive sessions can go here
 end
 
 # The next line updates PATH for the Google Cloud SDK.
 if test -f '/Users/lalit/google-cloud-sdk/path.fish.inc'
-  source '/Users/lalit/google-cloud-sdk/path.fish.inc'
+    source '/Users/lalit/google-cloud-sdk/path.fish.inc'
 end
 
 if test -f 'Users/lalit/.cargo/env'
-  source /Users/lalit/.cargo/env
+    source /Users/lalit/.cargo/env
 end
 
 set -gx PATH $PATH $HOME/.cargo/bin
 
 # Alias 'cd' to 'zoxide' only in interactive sessions
 if status is-interactive
-  zoxide init --cmd cd fish | source
+    zoxide init --cmd cd fish | source
 end
 
 # fzf
@@ -119,24 +123,38 @@ fzf --fish | source
 # pnpm
 set -gx PNPM_HOME /Users/lalit/Library/pnpm
 if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
 
 # if we have a config in ~/.local for private things, source them now
 if test -f ~/.local/fish/config.fish
-  source ~/.local/fish/config.fish
+    source ~/.local/fish/config.fish
 end
 
 # always be in a tmux session
 if test "$TERM_PROGRAM" = ghostty; or test "$TERM_PROGRAM" = "iTerm.app"; or test "$TERM_PROGRAM" = Apple_Terminal
-  if not set -q TMUX
-    tmux has-session -t default 2>/dev/null
-    if test $status -ne 0
-      tmux new-session -s default -d
+    if not set -q TMUX
+        tmux has-session -t default 2>/dev/null
+        if test $status -ne 0
+            tmux new-session -s default -d
+        end
+        exec tmux attach-session -t default
     end
-    exec tmux attach-session -t default
-  end
+end
+
+functions -c fish_prompt _original_fish_prompt 2>/dev/null
+
+function fish_prompt --description 'Write out the prompt'
+    if set -q ZMX_SESSION
+        echo -n "[$ZMX_SESSION] "
+    end
+    _original_fish_prompt
 end
 
 # local only configuration is in ~/.local/fish/config.fish
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/lalit/google-cloud-sdk/path.fish.inc' ]
+    . '/Users/lalit/google-cloud-sdk/path.fish.inc'
+end
