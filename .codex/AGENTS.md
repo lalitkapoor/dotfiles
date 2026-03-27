@@ -27,6 +27,9 @@
 - Each `~/docs/<repo-name>/` directory is its own git repo. When asked to commit or push docs, `cd` into `~/docs/<repo-name>/` (where the `.git` folder lives), NOT `~/docs/`. For example, to push changes in `~/docs/notion-next/local-snapshots/`, the git repo is at `~/docs/notion-next/`.
 - When I ask you to study something to explain how it works and we're in a git repo, create a doc in the appropriate project folder in addition to telling me.
 - When studying or trying to understand how something works, check available skills to see if they can help.
+- Start notes, artifacts, and generated output with a short executive summary that states the problem and the goal.
+- In notes, artifacts, and generated output, make the main point clear before moving to the next section.
+- Prefer plain language in notes and artifacts; use examples or small samples when they make the point clearer.
 - When studying a system, capture:
   - Concepts and insights that aid future understanding or implementation
   - Flows or complex state as ASCII or Mermaid diagrams
@@ -66,6 +69,16 @@
 
 ## Explanations and communication
 - Explain complex behavior with concrete state transitions, not high-level abstractions.
+- Communicate plainly; prefer the simplest wording that still stays technically correct.
+- Start substantial responses with a short executive summary that states the problem and goal.
+- Lead each section with its main point before supporting detail.
+- Include a concrete example or sample when it would make the explanation easier to follow.
+- For teaching, debugging explanations, and technical write-ups, prefer explanation-first structure over status-update structure:
+  - problem or question first
+  - then the code or state that caused it
+  - then the observed behavior
+  - then the fix or takeaway
+- Do not force `Result -> What changed -> Verification -> Decision/Next step` onto explanation docs or teaching answers when it makes them harder to follow.
 - Structure non-trivial explanations as:
   1. Initial state
   2. Sequence of events
@@ -80,16 +93,32 @@
 
 ### Communication style
 - Start with the outcome or current action, not conversational filler (avoid openers like "Great", "Perfect", "Got it").
+- For substantial replies, notes, and artifacts, begin with a short executive summary of the problem and the goal.
 - For substantial work, use: 1) result first, 2) key details with evidence, 3) clear next step or decision needed.
 - Keep progress updates to 1-2 sentences: what changed, why it matters, what happens next.
+- Make the point of each section explicit before moving on to supporting detail or the next section.
 - Use structure only when it improves scanability: short headers, flat bullets, and numbered options for decisions.
 - Prefer concrete artifacts over abstractions: exact file paths, commands, conditions, and observable effects.
+- Prefer examples, sample inputs/outputs, or short concrete traces when they improve clarity.
 - When blocked or uncertain, state the blocker explicitly, list options with tradeoffs, and recommend one.
 - Keep tone direct and pragmatic; avoid cheerleading, repetition, and unnecessary hedging.
 - Expand where additional depth improves clarity, understanding, or decision quality.
 
 ### Message formatting and flow
-- Use section flow for substantial replies: `Result` -> `What changed` -> `Verification` -> `Decision/Next step`.
+- Match the structure to the job instead of forcing one universal template.
+- Prefer the smallest structure that makes the answer easy to scan.
+- For status updates, use 1-2 short sentences: what changed, why it matters, what happens next.
+- For implementation updates and execution reports, use:
+  1. `Result`
+  2. `What changed`
+  3. `Verification`
+  4. `Decision/Next step`
+- For explanation-heavy responses and docs, start with the problem, question, or surprising behavior, then show:
+  1. the relevant code or state
+  2. the sequence of events
+  3. the observable outcome
+  4. the fix, implication, or takeaway
+- For decision-making replies, start with the decision to make, then list options with tradeoffs and a recommendation.
 - Use bold labels (`Problem`, `Fix`, `Why`, `Decision`) to highlight key points, not for decoration.
 - Prefer flat bullets; avoid deep nesting in terminal-oriented responses.
 - Use numbered options (`1.`, `2.`, `3.`) when a decision is required, with a brief tradeoff per option.

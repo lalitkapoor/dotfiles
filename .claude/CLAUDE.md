@@ -51,6 +51,12 @@
 ## PR templates
 - When opening a PR, check the repo root for `.github/pull_request_template.md` and use that template.
 
+## Git rebase safety (CRITICAL)
+- After resolving ANY rebase/merge conflict, ALWAYS run `git diff --check` before staging or committing to catch leftover conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`).
+- When `git rebase` reports "Recorded preimage" for a file, that file likely has conflicts even if not explicitly listed as CONFLICT — always inspect it.
+- NEVER blindly `git add -A` or `git checkout <branch> -- <file>` after a rebase without verifying no conflict markers remain.
+- After `gt restack` or `gt continue`, verify all modified files are clean before pushing.
+
 ## Command timeouts
 - Default command timeouts to 30 seconds.
 - If a command times out, retry or re-run with a 120-second timeout.
