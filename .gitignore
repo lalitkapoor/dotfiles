@@ -24,3 +24,6 @@ project.xcworkspace
 .config/tmux/plugins/*
 .config/fish/fish_variables
 .config/fish/completions/notion.fish
+
+# Installed agent skills - track .skill-lock.json instead
+.agents/skills/
