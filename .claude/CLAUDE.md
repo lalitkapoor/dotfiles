@@ -1,5 +1,73 @@
 # Lalit preferences
 
+## Overall principles
+
+Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
+
+**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
+
+### 1. Think Before Coding
+
+**Don't assume. Don't hide confusion. Surface tradeoffs.**
+
+Before implementing:
+- State your assumptions explicitly. If uncertain, ask.
+- If multiple interpretations exist, present them - don't pick silently.
+- If a simpler approach exists, say so. Push back when warranted.
+- If something is unclear, stop. Name what's confusing. Ask.
+
+### 2. Simplicity First
+
+**Minimum code that solves the problem. Nothing speculative.**
+
+- No features beyond what was asked.
+- No abstractions for single-use code.
+- No "flexibility" or "configurability" that wasn't requested.
+- No error handling for impossible scenarios.
+- If you write 200 lines and it could be 50, rewrite it.
+
+Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
+
+### 3. Surgical Changes
+
+**Touch only what you must. Clean up only your own mess.**
+
+When editing existing code:
+- Don't "improve" adjacent code, comments, or formatting.
+- Don't refactor things that aren't broken.
+- Match existing style, even if you'd do it differently.
+- If you notice unrelated dead code, mention it - don't delete it.
+
+When your changes create orphans:
+- Remove imports/variables/functions that YOUR changes made unused.
+- Don't remove pre-existing dead code unless asked.
+
+The test: Every changed line should trace directly to the user's request.
+
+### 4. Goal-Driven Execution
+
+**Define success criteria. Loop until verified.**
+
+Transform tasks into verifiable goals:
+- "Add validation" → "Write tests for invalid inputs, then make them pass"
+- "Fix the bug" → "Write a test that reproduces it, then make it pass"
+- "Refactor X" → "Ensure tests pass before and after"
+
+For multi-step tasks, state a brief plan:
+```
+1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+3. [Step] → verify: [check]
+```
+
+Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
+---
+
+**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+
+---
+
 ## Values and collaboration
 - Assume positive intent and stay optimistic while still challenging assumptions.
 - Favor maintainability over cleverness.
@@ -10,6 +78,7 @@
 - Invest early in tool and debugger mastery to deepen understanding and speed up development.
 
 ## Planning and alignment
+- After creating a plan Please step back and think again. How can we make this SIMPLER and DUMBER while still achieving our goals?
 - Create a detailed plan before implementation.
 - Start with the big picture, then break into sections and add details per section.
 - Capture key decisions and evaluation learnings in the plan.
@@ -23,9 +92,11 @@
 - Keep changes scoped; if scope grows, re-align before proceeding.
 
 ## Notes and research
-- Take notes during investigation and store them in `~/docs/<repo-name>/<project-name>/`.
+- Do not write to `~/docs/...` by default.
+- Only create or update docs in `~/docs/<repo-name>/<project-name>/` when I explicitly ask, using language like “save this to docs”, “take notes”, “write a doc”, “capture this for later”, or “document this”.
 - Each `~/docs/<repo-name>/` directory is its own git repo. When asked to commit or push docs, `cd` into `~/docs/<repo-name>/` (where the `.git` folder lives), NOT `~/docs/`. For example, to push changes in `~/docs/notion-next/local-snapshots/`, the git repo is at `~/docs/notion-next/`.
-- When I ask you to study something to explain how it works and we're in a git repo, create a doc in the appropriate project folder in addition to telling me.
+- If I ask you to study or explain something and do not explicitly ask to save it, respond in chat only.
+- If a doc would be useful, suggest it, but do not create it without my explicit request.
 - When studying or trying to understand how something works, check available skills to see if they can help.
 - When studying a system, capture:
   - Concepts and insights that aid future understanding or implementation
