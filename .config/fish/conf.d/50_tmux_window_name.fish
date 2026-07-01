@@ -61,10 +61,10 @@ function __tmux_rename_git_window --description "Rename tmux window to git branc
             set -l worktree_name (basename "$physical_repo_root")
             if test -n "$repo_name" -a -n "$worktree_name"
                 if test "$is_detached" = "true"
-                    command tmux rename-window "$repo_name/$worktree_name"
+                    command tmux rename-window -- "$repo_name/$worktree_name"
                 else
                     set -l suffix " ($repo_name/$worktree_name)"
-                    command tmux rename-window "$branch$suffix"
+                    command tmux rename-window -- "$branch$suffix"
                 end
                 return
             end
@@ -73,10 +73,10 @@ function __tmux_rename_git_window --description "Rename tmux window to git branc
 
     if test -n "$repo_name"
         if test "$is_detached" = "true"
-            command tmux rename-window "$repo_name"
+            command tmux rename-window -- "$repo_name"
         else
             set -l suffix " ($repo_name)"
-            command tmux rename-window "$branch$suffix"
+            command tmux rename-window -- "$branch$suffix"
         end
         return
     end
@@ -85,7 +85,7 @@ function __tmux_rename_git_window --description "Rename tmux window to git branc
         return
     end
 
-    command tmux rename-window "$branch"
+    command tmux rename-window -- "$branch"
 end
 
 function __tmux_rename_git_window_on_pwd --on-variable PWD
