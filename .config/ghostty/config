@@ -1,7 +1,10 @@
 # update to latest pre-release builds
-auto-update-channel = tip
+# auto-update-channel = tip
 
-theme = dark:"Ayu Mirage",light:"Ayu Light"
+auto-update-channel = stable
+
+# theme = dark:"Ayu Mirage",light:"Ayu Light"
+theme = dark:"Ayu Mirage",light:"Ayu Mirage"
 font-family = BlexMono Nerd Font Mono
 font-size = 12
 macos-titlebar-style = hidden
@@ -13,40 +16,46 @@ window-padding-y = 8
 macos-option-as-alt = true
 
 # allow tmux to create vertical and horizontal splits
-keybind = cmd+d=esc:d
-keybind = cmd+shift+d=esc:D
+#keybind = cmd+d=esc:d
+#keybind = cmd+shift+d=esc:D
 
 # allow tmux to use these for navigating between panes
-keybind = cmd+left=esc:h
-keybind = cmd+right=esc:l
-keybind = cmd+up=esc:k
-keybind = cmd+down=esc:j
+#keybind = cmd+left=esc:h
+#keybind = cmd+right=esc:l
+#keybind = cmd+up=esc:k
+#keybind = cmd+down=esc:j
+
+# navigate Ghostty splits
+keybind = cmd+left=goto_split:left
+keybind = cmd+right=goto_split:right
+keybind = cmd+up=goto_split:up
+keybind = cmd+down=goto_split:down
 
 # allow tmux to use these for switching windows
-keybind = cmd+shift+left=unbind
-keybind = cmd+shift+right=unbind
-keybind = cmd+shift+left_bracket=csi:2;10[
-keybind = cmd+shift+right_bracket=csi:2;10]
+#keybind = cmd+shift+left=unbind
+#keybind = cmd+shift+right=unbind
+#keybind = cmd+shift+left_bracket=csi:2;10[
+#keybind = cmd+shift+right_bracket=csi:2;10]
 
 # cmd+k clears the terminal (sends command to tmux)
-keybind = cmd+k=esc:K
+#keybind = cmd+k=esc:K
 
 # cmd+w closes pane in tmux
-keybind = cmd+w=esc:w
+#keybind = cmd+w=esc:w
 
 # cmd+t opens a new tmux window
 keybind = cmd+t=esc:t
 
 # cmd+r renames a window in tmux
-keybind = cmd+r=esc:r
+#keybind = cmd+r=esc:r
 
 # cmd+f opens search in tmux
-# keybind = cmd+f=csi:2;10f
+## keybind = cmd+f=csi:2;10f
 
 # cmd+shift+r reloads tmux config
-keybind = cmd+shift+r=csi:2;10r
-keybind = shift+enter=text:\x1b\r
+#keybind = cmd+shift+r=csi:2;10r
+#keybind = shift+enter=text:\x1b\r
 
 # pass F5/F6 through to tmux (theme switch)
-keybind = f5=csi:15~
-keybind = f6=csi:17~
+#keybind = f5=csi:15~
+#keybind = f6=csi:17~

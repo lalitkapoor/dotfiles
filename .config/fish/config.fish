@@ -132,15 +132,27 @@ if test -f ~/.local/fish/config.fish
     source ~/.local/fish/config.fish
 end
 
-# always be in a tmux session
-if test "$TERM_PROGRAM" = ghostty; or test "$TERM_PROGRAM" = "iTerm.app"; or test "$TERM_PROGRAM" = Apple_Terminal
-    if not set -q TMUX
-        tmux has-session -t default 2>/dev/null
-        if test $status -ne 0
-            tmux new-session -s default -d
-        end
-        exec tmux attach-session -t default
-    end
+# tmux startup disabled in favor of Herdr.
+# if test "$TERM_PROGRAM" = ghostty; or test "$TERM_PROGRAM" = "iTerm.app"; or test "$TERM_PROGRAM" = Apple_Terminal
+#     if not set -q TMUX; and not set -q NO_TMUX
+#         tmux has-session -t default 2>/dev/null
+#         if test $status -ne 0
+#             tmux new-session -s default -d
+#         end
+#         exec tmux attach-session -t default
+#     end
+# end
+
+# always resume the default Herdr session
+# if test "$TERM_PROGRAM" = ghostty; or test "$TERM_PROGRAM" = "iTerm.app"; or test "$TERM_PROGRAM" = Apple_Terminal
+#     if not set -q HERDR_ENV; and not set -q NO_TMUX
+#         exec herdr
+#     end
+# end
+
+# Open a fully configured Ghostty window without attaching tmux.
+function notmux --description 'Open Ghostty without tmux'
+    open -na Ghostty.app --args -e /usr/bin/env NO_TMUX=1 /opt/homebrew/bin/fish -l
 end
 
 functions -c fish_prompt _original_fish_prompt 2>/dev/null
